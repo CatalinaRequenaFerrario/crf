@@ -1,3 +1,4 @@
+// Archivo de configuracion para especificar cómo se van a importar las rutas
 {
   "compilerOptions": {
     "target": "ES2017",
