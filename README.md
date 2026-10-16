@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# crf — web personal
 
-## Getting Started
+Web personal de Catalina Requena Ferrario: un hub que enlaza el portfolio de desarrollo con sus proyectos creativos (Nagasaki, Sunny Sides y la banda Only Machines).
 
-First, run the development server:
+![Home](docs/home.png)
+
+## Qué incluye
+
+- **Home tipo "hub"** con una tarjeta por proyecto, cada uno con su color de acento.
+- **Nagasaki**: secciones de modeling, music, design, video, clothing y writing.
+- **Panel de administración** (`/admin`) protegido con contraseña para editar el contenido de cada sección con un editor visual ([Puck](https://puckeditor.com)), sin tocar código.
+- El contenido editado y las imágenes subidas se guardan en **Vercel Blob**.
+
+## Stack
+
+Next.js 16 (App Router, Server Actions, Route Handlers) · React 19 · TypeScript · Tailwind CSS v4 · Puck · Vercel Blob
+
+## Arrancar en local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para el panel de administración hace falta un `.env.local`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | Descripción |
+|---|---|
+| `ADMIN_PASSWORD` | Contraseña de acceso a `/admin` |
+| `ADMIN_COOKIE_SECRET` | Secreto con el que se firma la cookie de sesión |
+| `BLOB_READ_WRITE_TOKEN` | Token de Vercel Blob para leer y guardar contenido |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+```bash
+npm run lint    # ESLint
+npm run build   # build de producción
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Estado
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+En desarrollo: la sección de portfolio de desarrollo y Sunny Sides todavía tienen contenido provisional.
