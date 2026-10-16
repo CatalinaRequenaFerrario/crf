@@ -11,17 +11,19 @@ let hasNavigatedInternally = false
 
 export function useCanGoBack() {
     const pathname = usePathname()
-    const [canGoBack, setCanGoBack] = useState(hasNavigatedInternally)
+    const [prevPathname, setPrevPathname] = useState(pathname)
+    const [canGoBack, setCanGoBack] = useState(
+        () => hasNavigatedInternally || (firstPathname !== null && pathname !== firstPathname),
+    )
+
+    if (pathname !== prevPathname) {
+        setPrevPathname(pathname)
+        setCanGoBack(true)
+    }
 
     useEffect(() => {
-        if (firstPathname === null) {
-            firstPathname = pathname
-            return
-        }
-        if (pathname !== firstPathname) {
-            hasNavigatedInternally = true
-            setCanGoBack(true)
-        }
+        if (firstPathname === null) firstPathname = pathname
+        else if (pathname !== firstPathname) hasNavigatedInternally = true
     }, [pathname])
 
     return canGoBack
